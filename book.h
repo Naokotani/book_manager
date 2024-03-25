@@ -4,10 +4,10 @@
 #include <stdlib.h>
 
 typedef struct {
-    char title[256];
-    char author[100];
-    char isbn[15]; // ISBN-13 format
-    int year;
+  char title[256];
+  char author[100];
+  char isbn[15]; // ISBN-13 format
+  int year;
 } Book;
 
 void addBook();

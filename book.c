@@ -181,7 +181,6 @@ Book *read_data(char *filename, size_t *total) {
   }
 
   return data;
-
 }
 
 void getInput(char *buffer, size_t length, char *msg) {
