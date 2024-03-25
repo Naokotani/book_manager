@@ -1,0 +1,5 @@
+* Build
+To build run ensure that you have gcc compiler in your path and then run =make -k= and run with =./book_management_system=
+
+* Usage
+Enter the number that corresponds to the action that you would like to take. user inputs have character limits, and if the limits are exceeded the will be warned and the data will not be written. Ensure that you exit the program safely by enter "5" or data will not be properly saved. 

@@ -16,6 +16,7 @@ void searchBook();
 void listBooks();
 int saveBooks();
 int loadBooks();
+void getInput(char *buffer, size_t length, char *msg);
 bool write_data(char *filename, Book *data, size_t total);
 Book *read_data(char *filename, size_t *total);
 

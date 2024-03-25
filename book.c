@@ -22,32 +22,55 @@ void addBook() {
   books = realloc(books, sizeof(Book)* bookSize);
 
   Book book;
-  char year[5];
+  char title[300];
+  char author [300];
+  char year[100];
+  char isbn[100];
 
-  puts("Please enter a book title.");
-  fgets(book.title, 256, stdin);
-  book.title[strcspn(book.title, "\n")] = 0;
+  getInput(title, 300, "Please enter a book title\n");
 
-  puts("Please enter an author.");
-  fgets(book.author, 100, stdin);
-  book.author[strcspn(book.author, "\n")] = 0;
+  if (strlen(title) > 256) {
+    printf("Title string over 255 characters limit\n");
+    return;
+  } else {
+    strcpy(book.title, title);
+  }
 
-  puts("Please enter a 13 digit ISBN number.");
-  fgets(book.isbn, 15, stdin);
-  book.isbn[strcspn(book.isbn, "\n")] = 0;
-  
-  puts("Please enter a publishing year.");
-  fgets(year, 5, stdin);
-  book.year = strtol(year, (char **)NULL, 10);
+  getInput(author, 300, "Please enter an author\n");
+
+  if (strlen(author) > 100) {
+    printf("Author string over 99 characters limit\n");
+    return;
+  } else {
+    strcpy(book.author, author);
+  }
+
+  getInput(isbn, 100, "Please enter an ISBN number\n");
+
+  if (strlen(isbn) > 13) {
+    printf("ISBN string over 13 character limit\n");
+    return;
+  } else {
+    strcpy(book.isbn, isbn);
+  }
+
+  getInput(year, 100, "Please enter a book title\n");
+
+  if (strlen(year) > 4) {
+    printf("Year string over 4 characters\n");
+    return;
+  } else {
+    book.year = strtol(year, (char **)NULL, 10);
+  }
 
   size_t i = bookSize - 1;
   books[i] = book;
 
-  printf("\n--- Book Added ---\n");
-  printf("%s\n", books[i].title);
-  printf("%s\n", books[i].author);
-  printf("%s\n", books[i].isbn);
-  printf("%d\n", books[i].year);
+  printf("\n--- Book Added ---\n\n");
+  printf("    %s\n", books[i].title);
+  printf("    %s\n", books[i].author);
+  printf("    %s\n", books[i].isbn);
+  printf("    %d\n", books[i].year);
 }
 
 void deleteBook() {
@@ -88,10 +111,10 @@ void searchBook() {
 
   for (int i = 0; i < bookSize; i++) {
     if (strcmp(books[i].isbn, isbn) == 0) {
-      printf("\n--- %s ---\n", books[i].title);
-      printf("%s\n", books[i].author);
-      printf("%s\n", books[i].isbn);
-      printf("%d\n", books[i].year);
+      printf("\n--- %s ---\n\n", books[i].title);
+      printf("    %s\n", books[i].author);
+      printf("    %s\n", books[i].isbn);
+      printf("    %d\n", books[i].year);
       printf("\n------\n");
     }
   }
@@ -99,10 +122,10 @@ void searchBook() {
 
 void listBooks() {
   for (int i = 0; i < bookSize; i++) {
-    printf("\n--- %s ---\n", books[i].title);
-    printf("%s\n", books[i].author);
-    printf("%s\n", books[i].isbn);
-    printf("%d\n", books[i].year);
+    printf("\n--- %s ---\n\n", books[i].title);
+    printf("    %s\n", books[i].author);
+    printf("    %s\n", books[i].isbn);
+    printf("    %d\n", books[i].year);
     printf("\n------\n");
   }
 }
@@ -159,4 +182,10 @@ Book *read_data(char *filename, size_t *total) {
 
   return data;
 
+}
+
+void getInput(char *buffer, size_t length, char *msg) {
+  printf("%s", msg);
+  fgets(buffer, length, stdin);
+  buffer[strcspn(buffer, "\n")] = 0;
 }
