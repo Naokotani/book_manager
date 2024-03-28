@@ -54,7 +54,7 @@ void addBook() {
     strcpy(book.isbn, isbn);
   }
 
-  getInput(year, 100, "Please enter a book title\n");
+  getInput(year, 100, "Please enter a publication year\n");
 
   if (strlen(year) > 4) {
     printf("Year string over 4 characters\n");
@@ -130,15 +130,16 @@ void listBooks() {
   }
 }
 
-int saveBooks() {
+int saveBooks(bool freeBooks) {
   if (write_data("books.dat", books, bookSize)) {
-    printf("Books loaded\n");
+    printf("Books saved\n");
+    if (freeBooks) free(books);
     return 0;
   } else {
     printf("Error saving books");
+    if (freeBooks) free(books);
     return 1;
   }
-  free(books);
 }
 
 bool write_data(char *filename, Book *data, size_t total) {
