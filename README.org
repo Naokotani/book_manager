@@ -1,8 +1,8 @@
 * Build
-To build run ensure that you have gcc compiler in your path and then run =make -k= and run with =./book_management_system=
+To build run ensure that you have gcc compiler in your path and then run =mak= and run with =./book_management_system=
 
 * Usage
-Enter the number that corresponds to the action that you would like to take. user inputs have character limits, and if the limits are exceeded the will be warned and the data will not be written. Data will be saved automatically when you exit the program, so ensure that you exit the program safely by enter "5" or data will not be properly saved. 
+Enter the number that corresponds to the action that you would like to take. user inputs have character limits, and if the limits are exceeded the will be warned and the data will not be written. Data will not be saved automatically if you exit out of the programming without using the "save" or "save and exit" options. If you make a mistake and can't fix it, but exit without saving and the new data will be erased.
 
 * String validation
 I decided after some research that the best way to validate strings was to create temporary buffers that were larger than the memory set aside to store them in the structs. This way I can validate that he strings are not too large before I put them in the struct and write the data. That way any problems can be detected, user feedback provided and I can return the function to prevent bad data being saved to the dat file. 
@@ -14,5 +14,5 @@ I decided to move the logic for getting user inputs to a function. This makes th
 I added booleans to track whether functions were in an unrecovereable state. I could have made the functions return an Integer, but I thought using booleans reads a bit clearer, and only the functions directly called by main return integers as necessary. The drawback of this might be that it would be a bit harder to debug errors when they arise with a stack trace. Something to consider for further assignments. 
 
 * Saving data
-In this implementation I decided to load the books when the program starts and write them when the program it exits. This avoids excessively writing data, but had the disadvantage of potentially losing data if the program encounters an error or exits early for some other reason. I decided to add an optional manual save function to alleviate this issue. I also decided to add a Exit without saving option in case the user had inadvertently added bad data and they couldn't recover from the problem through the delete function.
+In this implementation I decided to load the books when the program starts and write them when the program exits. This avoids excessively writing data, but had the disadvantage of potentially losing data if the program encounters an error or exits early for some other reason. I decided to add an optional manual save function to alleviate this issue. I also decided to add a Exit without saving option in case the user had inadvertently added bad data and they couldn't recover from the problem through the delete function.
  

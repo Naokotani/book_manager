@@ -81,6 +81,7 @@ void deleteBook() {
 
   fgets(isbn, 15, stdin);
   isbn[strcspn(isbn, "\n")] = 0;
+
   int i;
   for (i = 0; i < bookSize; i++) {
     if (strcmp(books[i].isbn, isbn) == 0) {
